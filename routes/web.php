@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Automatic authentication-related routes added by
+ *   $ php artisan make:auth
+ */
+Auth::routes();
+
+Route::get('/', 'HomeController@index');
