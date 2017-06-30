@@ -17,12 +17,14 @@ class CreateSimilaritiesTable extends Migration
             $table->increments('id');
             $table->integer('entity1_id')->unsigned();
             $table->integer('entity2_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('confidence')->unsigned();
             $table->integer('similarity')->unsigned();
             $table->timestamps();
             
             $table->foreign('entity1_id')->references('id')->on('entities');
             $table->foreign('entity2_id')->references('id')->on('entities');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
