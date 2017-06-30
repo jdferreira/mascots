@@ -25,7 +25,7 @@ class User extends Controller
      */
     public function showProfile(Request $request)
     {
-        return view('user-profile', [ 'user' => $request->user() ]);
+        return view('user.profile-show', [ 'user' => $request->user() ]);
     }
     
     /**
@@ -48,7 +48,7 @@ class User extends Controller
      */
     public static function showEditProfileForm(Request $request)
     {
-        return view('user-profile-edit', [ 'user' => $request->user() ]);
+        return view('user.profile-edit', [ 'user' => $request->user() ]);
     }
     
     /**
@@ -59,6 +59,6 @@ class User extends Controller
      */
     public static function showHistory(Request $request)
     {
-        return view('user-history', [ 'user' => $request->user() ]);
+        return view('user.history', [ 'user' => $request->user() ]);
     }
 }
