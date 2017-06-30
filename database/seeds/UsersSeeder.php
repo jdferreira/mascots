@@ -37,7 +37,7 @@ class UsersSeeder extends Seeder
             'updated_at' => $now,
         ]);
         
-        DB::table('roles_users')->insert([
+        DB::table('role_user')->insert([
             [
                 'role_id' => $admin_role_id,
                 'user_id' => $user_id,

@@ -14,7 +14,7 @@ class InterestsSeeder extends Seeder
         $now = \Carbon\Carbon::now()->toDateTimeString();
         
         $admin_role_id = DB::table('roles')->where('name', '=', 'Admin')->value('id');
-        $admin_user = DB::table('roles_users')->where('role_id', '=', $admin_role_id)->value('id');
+        $admin_user = DB::table('role_user')->where('role_id', '=', $admin_role_id)->value('id');
         
         $interests = include 'data/interests.php';
         foreach ($interests as &$interest) {

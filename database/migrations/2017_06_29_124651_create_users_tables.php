@@ -46,7 +46,7 @@ class CreateUsersTables extends Migration
             $table->timestamps();
         });
         
-        Schema::create('roles_users', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned();
@@ -104,7 +104,7 @@ class CreateUsersTables extends Migration
         Schema::dropIfExists('interests');
         Schema::dropIfExists('social_handles');
         Schema::dropIfExists('networks');
-        Schema::dropIfExists('roles_users');
+        Schema::dropIfExists('role_user');
         Schema::dropIfExists('roles');
         Schema::dropIfExists('users');
         Schema::dropIfExists('countries');
