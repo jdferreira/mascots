@@ -64,5 +64,36 @@ return [
             [ 'key' => 'Budget', 'value' => '$9 million+ (re-release)' ],
             [ 'key' => 'Box office', 'value' => '$2.788 billion' ],
         ]
-    ]
+    ],
+    [
+        'title' => 'Gravity',
+        'url' => 'https://en.wikipedia.org/wiki/Gravity_(2013_film)',
+        'data' => [
+            [ 'key' => 'Directed by', 'value' => 'Alfonso Cuarón' ],
+            [ 'key' => 'Produced by', 'value' => 'Alfonso Cuarón' ],
+            [ 'key' => 'Produced by', 'value' => 'David Heyman' ],
+            [ 'key' => 'Written by', 'value' => 'Alfonso Cuarón' ],
+            [ 'key' => 'Written by', 'value' => 'Jonás Cuarón' ],
+            [ 'key' => 'Starring', 'value' => 'Sandra Bullock' ],
+            [ 'key' => 'Starring', 'value' => 'George Clooney' ],
+            [ 'key' => 'Music by', 'value' => 'Steven Price' ],
+            [ 'key' => 'Cinematography', 'value' => 'Emmanuel Lubezki' ],
+            [ 'key' => 'Edited by', 'value' => 'Alfonso Cuarón' ],
+            [ 'key' => 'Edited by', 'value' => 'Mark Sanger' ],
+            [ 'key' => 'Edited by', 'value' => 'Production company' ],
+            [ 'key' => 'Production company', 'value' => 'Esperanto Filmoj' ],
+            [ 'key' => 'Production company', 'value' => 'Heyday Films' ],
+            [ 'key' => 'Distributed by', 'value' => 'Warner Bros. Pictures' ],
+            [ 'key' => 'Release date', 'value' => 'August 28, 2013 (Venice)' ],
+            [ 'key' => 'Release date', 'value' => 'October 4, 2013 (United States)' ],
+            [ 'key' => 'Release date', 'value' => 'November 7, 2013 (United Kingdom)' ],
+            [ 'key' => 'Running time', 'value' => '91 minutes' ],
+            [ 'key' => 'Country', 'value' => 'United Kingdom' ],
+            [ 'key' => 'Country', 'value' => 'United States' ],
+            [ 'key' => 'Language', 'value' => 'English' ],
+            [ 'key' => 'Budget', 'value' => '$130 million' ],
+            [ 'key' => 'Box office', 'value' => '$723.2 million' ],
+        ]
+    ],
+    
 ];
