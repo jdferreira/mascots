@@ -8,7 +8,7 @@ use App\Models\Similarity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Collector extends Controller
+class CollectorController extends Controller
 {
     /**
      * Create a new controller instance.

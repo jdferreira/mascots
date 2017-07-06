@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Interests extends Controller
+class InterestsController extends Controller
 {
     /**
      * Return the interests based on a pattern
