@@ -1,17 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Collector</div>
-
-                <div class="panel-body">
-                    Will probably use partial views to add the panels here
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@if (! is_null($pair))
+    <x-collector-panel
+        :entity1="{{ $pair[0] }}"
+        :entity2="{{ $pair[1] }}"
+    ></x-collector-panel>
+@else
+    <x-collector-panel></x-collector-panel>
+@endif
 @endsection
