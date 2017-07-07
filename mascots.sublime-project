@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "name": "Mascots",
+            "follow_symlinks": true
+		}
+	]
+}
