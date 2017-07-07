@@ -26,7 +26,7 @@ class CollectorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show() {
-        return view('collector');
+        return view('collector')->with('pair', $this->getRandomPair());
     }
     
     /**
@@ -47,24 +47,42 @@ class CollectorController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public static function randomPair(Request $request)
+    public static function randomPair()
+    {
+        $pair = $this->getRandomPair();
+        
+        // If the returned pair is not null, construct an array to send as JSON
+        // with an 'ok' key containing the pair; otherwise the result of the
+        // action contain an 'error' key with a description of the error.
+        $result = isnull($pair) ?
+            ['error' => 'Unable to find a pair'] :
+            ['ok' => $pair];
+        
+        return response()->json($result);
+    }
+    
+    /**
+     * Return a random pair of entities that the user currently authenticated
+     * has not yet evaluated.
+     */
+    private function getRandomPair()
     {
         // Find a pair of entities not previously processed by this user. Try a
-        // predetermined number of times; if the threshold is met, then stop
-        // trying and return an error message stating the impossibility.
+        // predetermined number of times. If the threshold is met, then stop
+        // trying and return null; otherwise, just return the entity pair
         $max_tries = 5;
-        $count = 0;
+        $tries = 0;
         
         do {
-            $entities = Entity::inRandomOrder()->take(2)->get();
-            $count++;
-        } while ($count < $max_tries && static::collectedByUser($entities));
+            $pair = Entity::inRandomOrder()->take(2)->get();
+            $tries++;
+        } while ($tries < $max_tries && static::collectedByUser($pair));
         
-        if ($count == $max_tries) {
-            return response()->json(['error' => 'Unable to find a pair']);
+        if (static::collectedByUser($pair)) {
+            return null;
         }
         else {
-            return response()->json(['success' => $entities]);
+            return $pair->load('data');
         }
     }
     
