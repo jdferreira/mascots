@@ -4,6 +4,7 @@ return [
     [
         'title' => 'The Matrix',
         'url' => 'https://en.wikipedia.org/wiki/The_Matrix',
+        'picture' => 'https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg',
         'data' => [
             [ 'key' => 'Directed by', 'value' => 'The Wachowski Brothers' ],
             [ 'key' => 'Produced by', 'value' => 'Joel Silver' ],
@@ -34,6 +35,7 @@ return [
     [
         'title' => 'Avatar',
         'url' => 'https://en.wikipedia.org/wiki/Avatar_(2009_film)',
+        'picture' => 'https://upload.wikimedia.org/wikipedia/en/b/b0/Avatar-Teaser-Poster.jpg',
         'data' => [
             [ 'key' => 'Directed by', 'value' => 'James Cameron' ],
             [ 'key' => 'Produced by', 'value' => 'James Cameron' ],
@@ -68,6 +70,7 @@ return [
     [
         'title' => 'Gravity',
         'url' => 'https://en.wikipedia.org/wiki/Gravity_(2013_film)',
+        'picture' => 'https://upload.wikimedia.org/wikipedia/en/f/f6/Gravity_Poster.jpg',
         'data' => [
             [ 'key' => 'Directed by', 'value' => 'Alfonso Cuarón' ],
             [ 'key' => 'Produced by', 'value' => 'Alfonso Cuarón' ],

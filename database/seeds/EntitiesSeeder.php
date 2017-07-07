@@ -1,6 +1,8 @@
 <?php
 
+use App\Helpers\Downloader;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class EntitiesSeeder extends Seeder
 {
@@ -26,6 +28,16 @@ class EntitiesSeeder extends Seeder
             }
             else {
                 $data = [];
+            }
+            
+            // If there is a picture url, use it to fetch the picture, save it
+            // in storage and change its value to the actual path in the server
+            if (isset($entity['picture'])) {
+                $disk = Storage::disk('public');
+                $url = $entity['picture'];
+                $path = Downloader::downloadFile($url, 'pictures', $disk);
+                
+                $entity['picture'] = $disk->url($path);
             }
             
             // Insert this entity into the database, and keep a record of its id
