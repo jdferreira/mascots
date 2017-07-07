@@ -71,35 +71,42 @@ class CollectorController extends Controller
         // predetermined number of times. If the threshold is met, then stop
         // trying and return null; otherwise, just return the entity pair
         $max_tries = 5;
-        $tries = 0;
         
-        do {
+        for ($i=0; $i < $max_tries; $i++) {
             $pair = Entity::inRandomOrder()->take(2)->get();
-            $tries++;
-        } while ($tries < $max_tries && static::collectedByUser($pair));
+            
+            // If not enough entities exist, immediately return null
+            if (count($pair) < 2) {
+                return null;
+            }
+            
+            // If the user has not already evaluated this pair, then it is the
+            // result to return back to the caller. But before we return it
+            // back, we load the relationship that gets the entity data.
+            if (!static::collectedByUser($pair)) {
+                $pair->load('entityData');
+                return $pair;
+            }
+        }
         
-        if (static::collectedByUser($pair)) {
-            return null;
-        }
-        else {
-            return $pair->load('data');
-        }
+        // If we reach this, it means no good pairs has been found.
+        return null;
     }
     
     /**
      * Return true if the authenticated user has already provided an answer to
-     * the similarity between two entities; if such is not the case, false.
+     * the similarity between the two entities in the provided pair. If the
+     * user has not yet done such thing, then return false to the caller
      */
-    private static function collectedByUser($entities) {
-        // Pluck the id attribute of the retrieved entities
-        $entities = $entities->pluck('id');
+    private static function collectedByUser($pair) {
+        // Pluck the id attribute of the retrieved pair
+        $ids = $pair->pluck('id');
         
-        // Determine whether the entities have been used previously by the user
-        // to collect the similarity of a pair
+        // Determine whether the pair has been used previously by the user
         return Auth::user()->similarities()
-            ->whereIn('entity1_id', $entities)
-            ->whereIn('entity2_id', $entities)
-            ->where('entity1_id', '!=', 'entity2_id')
+            ->whereIn('entity1_id', $ids)
+            ->whereIn('entity2_id', $ids)
+            ->where('entity1_id', '!=', 'entity2_id') // Should not be needed!
             ->exists();
     }
 }
