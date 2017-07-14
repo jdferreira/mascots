@@ -30,6 +30,9 @@ class CreateEntitiesTables extends Migration
             
             $table->foreign('entity_id')->references('id')->on('entities');
         });
+        
+        // Create the pictures/ directory in storage
+        Storage::disk('public')->makeDirectory('pictures');
     }
 
     /**
@@ -41,5 +44,8 @@ class CreateEntitiesTables extends Migration
     {
         Schema::dropIfExists('entity_data');
         Schema::dropIfExists('entities');
+        
+        // Also delete the files inside the pictures/ directory in storage
+        Storage::disk('public')->deleteDirectory('pictures');
     }
 }
