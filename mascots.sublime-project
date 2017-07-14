@@ -3,8 +3,9 @@
 	[
 		{
 			"path": ".",
-            "name": "Mascots",
-            "follow_symlinks": true
+			"name": "Mascots",
+			"follow_symlinks": true,
+			"ignore_inodes": true
 		}
 	]
 }
